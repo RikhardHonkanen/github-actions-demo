@@ -36,15 +36,11 @@ jobs:
         with:
           name: app
           path: app
+      - uses: elstudio/action-install-azure-cli@v1
       - name: Login to Azure        
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - uses: azure/CLI@v1
-        with:
-          azcliversion: 2.0.72
-          inlineScript: |
-            az account list
+          creds: ${{ secrets.AZURE_CREDENTIALS }}      
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v2
         with:
